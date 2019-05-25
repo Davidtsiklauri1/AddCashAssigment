@@ -1,0 +1,10 @@
+<!-- <ul>
+<li *ngFor='let items of arrItems'>{{items}}</li>
+<ul> -->
+<div class="list-menu">
+<ul>
+<li  *ngFor='let items of arrItems; let i = index ' [ngStyle]="{'background-color':items >= 0 ? 'red' : 'blue' }">{{items}} <a (click)='onClick(i)'>x</a></li>
+
+
+</ul>
+</div>
