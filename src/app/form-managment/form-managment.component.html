@@ -1,10 +1,19 @@
-
-  <h6 class="display-4">Adcash test assigment </h6>
-  <form>
-  <div class="form-group" >
-    <label for="exampleFormControlTextarea1">Type tags here using comma, semicilon and line break as delimiters</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="7"  [formControl]='addTags'></textarea>
+<h6 class="display-4">Adcash test assigment</h6>
+<form>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1"
+      >Type tags here using comma, semicilon and line break as delimiters</label
+    >
+    <textarea
+      class="form-control"
+      id="exampleFormControlTextarea1"
+      rows="7"
+      [formControl]="addTags"
+    ></textarea>
   </div>
-  <button type="button" class="btn btn-primary "  (click)="onClick(addTags)" >Add tags</button>
-  </form>
-  <app-item-list [arrItems]='arr'></app-item-list>
+  <button type="button" class="btn btn-primary " (click)="onClick(addTags)">
+    Add tags
+  </button>
+</form>
+<app-item-list [arrItems]="arr"></app-item-list>
+<app-form-edit (valueChange)="changeValue($event)"></app-form-edit>

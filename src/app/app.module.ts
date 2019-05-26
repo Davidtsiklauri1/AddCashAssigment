@@ -7,12 +7,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { FormManagmentComponent } from './form-managment/form-managment.component';
 import {FormService} from './Services/form.service';
-import { ItemListComponent } from './item-list/item-list.component'
+import { ItemListComponent } from './item-list/item-list.component';
+import { FormEditComponent } from './form-edit/form-edit.component'
 @NgModule({
   declarations: [
     AppComponent,
     FormManagmentComponent,
-    ItemListComponent
+    ItemListComponent,
+    FormEditComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +23,7 @@ import { ItemListComponent } from './item-list/item-list.component'
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [FormService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

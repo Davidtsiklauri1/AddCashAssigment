@@ -5,9 +5,13 @@ import { Injectable } from "@angular/core";
 })
 export class FormService {
   constructor() {}
-arr = [];
-  get(value:string) {
-    let str = value,arrIndex = [0],arrs = [],arrNumbers = [],val;
+  arr = [];
+  get(value: string) {
+    let str = value,
+      arrIndex = [0],
+      arrs = [],
+      arrNumbers = [],
+      val;
     for (let i = 0; i < str.length; i++) {
       if (str[i] === "," || str[i] === "\n" || str[i] === ";") {
         arrIndex.push(i + 1);
@@ -35,33 +39,33 @@ arr = [];
       }
     }
     val = arrNumbers.map(val => Number(val));
-   this.arr.push(...val);
-this.saveLocalStorage(this.arr);
+    this.arr.push(...val);
+    this.saveLocalStorage(this.arr);
+  }
+  saveLocalStorage(arr) {
+    localStorage.setItem("key", JSON.stringify(arr));
+    this.LoadLocalStorage();
+  }
 
-
-
-
-
-}
-saveLocalStorage(arr){
-
-
-localStorage.setItem("key", JSON.stringify(arr));
-this.LoadLocalStorage();
-}
-
-LoadLocalStorage(){
-let item = JSON.parse(localStorage.getItem("key"));
-return item;
-
-}
-delete(arr,i){
-let elem = JSON.parse(localStorage.getItem("key"));
-elem.splice(i,1);
-arr.splice(i,1);
-localStorage.setItem('key',JSON.stringify(arr));
-
-
-}
-
+  LoadLocalStorage() {
+    let item = JSON.parse(localStorage.getItem("key"));
+    return item;
+  }
+  delete(arr, i) {
+    let elem = JSON.parse(localStorage.getItem("key"));
+    elem.splice(i, 1);
+    arr.splice(i, 1);
+    localStorage.setItem("key", JSON.stringify(arr));
+  }
+  EditForm(Edit) {
+    if (typeof Edit === "string") {
+      let splilited = Edit.split(",");
+      let result = splilited.map(x => Number(x));
+      this.saveLocalStorage(result);
+      return result;
+    } else {
+      this.saveLocalStorage(Edit);
+      return Edit;
+    }
+  }
 }
